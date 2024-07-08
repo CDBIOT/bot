@@ -23,7 +23,10 @@ app.get('/', (req, res) => {
   
 const client = new Client({
  // restartOnAuthFail: true,
-  authStrategy: new LocalAuth({ clientId: 'cdbot' }),
+ authStrategy: new LocalAuth(),
+ webVersion: '2.2412.50',
+
+ // authStrategy: new LocalAuth({ clientId: 'cdbot' }),
   puppeteer: { headless: true,
     args: [
       '--no-sandbox',
