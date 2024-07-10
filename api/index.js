@@ -4,8 +4,8 @@ const http = require('http');
 
 const app = express();
 const server = http.createServer(app);
-
-const qrcode = require ('qrcode-terminal');
+const qrcode = require('qrcode');
+//const qrcode = require ('qrcode-terminal');
 const routers = express.Router();
 const mime = require('mime-types');
 const Server = require("socket.io");
@@ -53,12 +53,37 @@ io.on('connection', function(socket) {
   console.log(socket.id);
   socket.emit('message', '© BOT-CDB- Iniciado');
   socket.emit('message', socket.id)
-  socket.emit('qr', '');
+  socket.emit('qr', './icon.svg');
 
- client.on('qr', (qr) => {
+ client.once('qr', (qr) => {
     qrcode.generate(qr, {small: true});
     console.log('QR RECEIVED', qr);
+    socket.emit('qr',qr)
  });
+ 
+client.on('qr', (qr) => {
+  console.log('QR RECEIVED', qr);
+  qrcode.toDataURL(qr, (err, url) => {
+    socket.emit('qr', url);
+    socket.emit('message', '© BOT-CDB QRCode recebido, aponte a câmera  seu celular!');
+  });
+});
+
+
+//  router.get('/', async (req, res) => {
+//   try {
+   //   const client = new Client(...)
+     // let qr = await new Promise((resolve, reject) => {
+      client.once('qr', (qr) => {
+              //reject(new Error("QR event wasn't emitted in 15 seconds."))
+          res.send(qr)
+      })
+    
+  //}
+  // catch (err) {
+  //     res.send(err.message)
+  // }
+//}
 
 client.on('ready', () => {
     socket.emit('ready', '© BOT-CDB Dispositivo pronto!');

@@ -6,7 +6,6 @@
 	<title>Whatsapp API</title>
     
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
-	
 	<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 <!-- 	
 <link rel="stylesheet" type="text/css" href="../../css/css.css" />
@@ -32,7 +31,8 @@
 
 	<script>
 		$(document).ready(function() {
-			//var socket = io('http://localhost:3000/');
+			//var socket = io();
+			
 
 			socket.on('message', function(msg) {
 				$('.logs').append($('<li>').text(msg));
@@ -59,7 +59,7 @@
 		<h1>Whatsapp API</h1>
 		<h3>Entre agora para comunidade CDB: <a href="https://repo1-beta.vercel.app/">clique aqui</a></h3>
 		<p>CDB MOD</p>
-		<img src="/" alt="QR Code" id="qrcode">
+		<img src="" alt="QR Code" id="qrcode">
 		<h3>Logs:</h3>
 	</section>
 
