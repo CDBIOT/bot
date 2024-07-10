@@ -13,8 +13,6 @@ const path = require("path");
 
 const  { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 
-// const socketIO = require('socket.io');
-// const io = socketIO(server);
 
 const io = Server(server)
 
@@ -23,8 +21,6 @@ const bot = require('../bot');
 const bot_basic = require('../bot_basic')
 
 
-//routers.use('/', express.static(__dirname + '/'))
-//app.use("/", express.static(__dirname + "/socketio.html"))
 app.use(express.static(path.join(__dirname, "..")));
 
 app.get("/",function(req,res){
@@ -69,21 +65,6 @@ client.on('qr', (qr) => {
   });
 });
 
-
-//  router.get('/', async (req, res) => {
-//   try {
-   //   const client = new Client(...)
-     // let qr = await new Promise((resolve, reject) => {
-      client.once('qr', (qr) => {
-              //reject(new Error("QR event wasn't emitted in 15 seconds."))
-          res.send(qr)
-      })
-    
-  //}
-  // catch (err) {
-  //     res.send(err.message)
-  // }
-//}
 
 client.on('ready', () => {
     socket.emit('ready', '© BOT-CDB Dispositivo pronto!');
