@@ -45,9 +45,11 @@
 
 			socket.on('ready', function(data) {
 				$('#qrcode').hide();
+				$('#qrcode').hide();
 			});
 
 			socket.on('authenticated', function(data) {
+				$('#qrcode').hide();
 				$('#qrcode').hide();
 			});
 		});
