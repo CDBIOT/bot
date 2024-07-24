@@ -30,7 +30,11 @@ app.get("/",function(req,res){
 
 const client = new Client({
  // restartOnAuthFail: true,
-  authStrategy: new LocalAuth({ clientId: 'cdbot' }),
+  authStrategy: new LocalAuth({ 
+    clientId: 'cdbot',
+    dataPath: 'https://bot-ten-alpha.vercel.app/api/'
+
+   }),
   puppeteer: { headless: true,
     args: [
       '--no-sandbox',
