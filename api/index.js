@@ -34,8 +34,7 @@ const client = new Client({
     clientId: 'cdbot',
     //dataPath: 'https://bot-ten-alpha.vercel.app/api/'
    // dataPath: __dirname + 'api/'
-    
-
+  
    }),
   puppeteer: { headless: true,
     args: [
