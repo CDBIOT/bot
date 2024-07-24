@@ -11,7 +11,7 @@ const mime = require('mime-types');
 const Server = require("socket.io");
 const path = require("path");
 
-const  { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const  { Client, NoAuth, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 
 
 const io = Server(server)
@@ -30,9 +30,11 @@ app.get("/",function(req,res){
 
 const client = new Client({
  // restartOnAuthFail: true,
-  authStrategy: new LocalAuth({ 
+  authStrategy: new NoAuth({ 
     clientId: 'cdbot',
-    dataPath: 'https://bot-ten-alpha.vercel.app/api/'
+    //dataPath: 'https://bot-ten-alpha.vercel.app/api/'
+   // dataPath: __dirname + 'api/'
+    
 
    }),
   puppeteer: { headless: true,
@@ -92,12 +94,12 @@ client.on('change_state', state => {
   console.log('© BOT-CDB Status de conexão: ', state );
 });
 
-// client.on('disconnected', (reason) => {
-//   socket.emit('message', '© BOT-ZDG Cliente desconectado!');
-//   console.log('© BOT-CDB Cliente desconectado', reason);
-  //client.initialize();
+client.on('disconnected', (reason) => {
+  socket.emit('message', '© BOT-ZDG Cliente desconectado!');
+  console.log('© BOT-CDB Cliente desconectado', reason);
+ // client.initialize();
+ });
 // });
-//});
 
 
 client.on('message_create', message => {
@@ -166,6 +168,7 @@ client.on('message', async msg => {
   else if (msg.body !== null && msg.body === "7") {
     msg.reply("*" + nomeContato + "*, " + ", que ótimo, vou te enviar alguns cases de sucesso:\n\n📺 https://youtu.be/KHGchIAZ5i0\nGustavo: A estratégia mais barata, eficiente e totalmente escalável.\n\n📺 https://youtu.be/S4Cwrnn_Llk\nNatália: Nós aumentamos o nosso faturamento e vendemos pra mais clientes com a estratégia ZDG.\n\n📺 https://youtu.be/XP2ns7TOdIQ\nYuri: A ferramenta me ajudou muito com as automações da minha loja online.\n\n📺 https://youtu.be/KBedG3TcBRw\nFrancisco: O Pedrinho pega na nossa mão. Se eu consegui, você também consegue.\n\n📺 https://youtu.be/L7dEoEwqv-0\nBruno: A Comunidade ZDG e o suporte do Pedrinho são incríveis. Depois que eu adquiri o curso eu deixei de gastar R$300,00 todo mês com outras automações.\n\n📺 https://youtu.be/StRiSLS5ckg\nRodrigo: Eu sou desenvolvedor de sistemas, e venho utilizando as soluções do Pedrinho para integrar nos meus sistemas, e o ganho de tempo é excepcional.\n\n📺 https://youtu.be/sAJUDsUHZOw\nDarley: A Comunidade ZDG democratizou o uso das APIs do WPP.\n\n📺 https://youtu.be/S4Cwrnn_Llk\nNatália: Nós aumentamos o nosso faturamento e vendemos pra mais clientes com a estratégia ZDG.\n\n📺 https://youtu.be/crO8iS4R-UU \nndré: O Pedrinho compartilha muitas informações na Comunidade ZDG.\n\n📺 https://youtu.be/LDHFX32AuN0\nEdson: O retorno que tenho no meu trabalho com as informações do Pedrinho, fez o meu investimento sair de graça.\n\n📺 https://youtu.be/F3YahjtE7q8\nDaniel: Conteúdo de muita qualidade. Obrigado, professor Pedrinho.\n\n📺 https://youtu.be/YtRpGgZKjWI\nMarcelo: Tenho uma agência digital e com o curso do Pedrinho nós criamos um novo produto e já estamos vendendor.\n\n📺 https://youtu.be/0DlOJCg_Eso\nKleber: O Pedrinho tem uma didática excelente e com o curso dele, consegui colocar minha API para rodar 24 horas e estou fazendo vendas todos os dias.\n\n📺 https://youtu.be/rsbUJrPqJeA\nMárcio: Antes de adquirir eu tinha pouco conhecimento, mas consegui aprender muito sobre API com o Pedrinho e o pessoal da comunidade.\n\n📺 https://youtu.be/YvlNd-dM9oo\nZé: O Pedrinho tem um conteúdo libertador. Foi o melhor investimento que eu fiz. Conteúdo surreal.\n\n📺 https://www.youtube.com/watch?v=mHqEQp94CiE\nLéo: Acoplamos o Método ZDG aos nossos lançamento e otimizamos os nossos resultados.\n\n📺 https://youtu.be/pu6PpNRJyoM\nRenato: A ZDG é um método que vai permitir você aumentar o seu faturamento em pelo menos 30%.\n\n📺 https://www.youtube.com/watch?v=08wzrPorZcI\nGabi: Implementei a estratégia sem saber nada de programação\n\n📺 https://youtu.be/10cR-c5rOKE\nDouglas: Depois de implementar as soluções do Pedrinho eu tive um aumento de 30% no meu faturamento, sem contar que na comunidade ZDG todos se ajudam.\n\n📺 https://youtu.be/kFPhpl5uyyU\nDanielle: Sem sombra de dúvida ter conhecido o Pedrinho e o seu conteúdo foi a melhor coisa que aconteceu comigo.\n\n📺 https://youtu.be/3TCPRstg5M0\nCalebe: O sistema Zap das Galáxias foi fundamental na elaboração e na execução das estratégias do meu negócio.\n\n📺 https://youtu.be/XfA8VZck5S0\nArtur: As soluções da comunidade me ajudaram muito a aumentar as minhas vendas e a interagir com os meus clientes de maneira automática. O suporte é incrível.\n\n📺 https://youtu.be/4M-P3gn9iqU\nSamuel: A Comunidade ZDG tem muito conteúdo legal, que da pra você utilizar no seu dia a dia pra meios profissionais. Depois que aprendi o método, nunca mais tive bloqueios.");
   }
+
 
 });
 
