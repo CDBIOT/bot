@@ -20,6 +20,6 @@
     "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-exodus"
   },
   "devDependencies": {
-    "puppeteer": "^22.13.1"
+    "puppeteer": "^22.14.0"
   }
 }
