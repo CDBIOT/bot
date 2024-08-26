@@ -24,7 +24,7 @@ const bot_basic = require('../bot_basic')
 app.use(express.static(path.join(__dirname, "..")));
 
 app.get("/",function(req,res){
-  res.sendFile(__dirname + "/socketio.html");
+  res.sendFile(__dirname + "/index.html");
 });
 
 
