@@ -34,3 +34,44 @@ function Calcula_Fiocoilair() {
         document.Fiocoilair.Bobina.value = Bob;
     }
 }
+function Calcula_Oneturnairan() {
+    la1n = parseFloat(Oneturnairan.la1.value);
+    lb1n = parseFloat(Oneturnairan.lb1.value);
+    a1n = parseFloat(Oneturnairan.a1.value);
+    if (isNaN(la1n) || isNaN(lb1n) || isNaN(a1n)) {
+        alert("Entre numeros formato XX.XX");
+    } else {
+        a1aux = la1n * lb1n;
+        lc8 = Math.sqrt(la1n * la1n + lb1n * lb1n);
+        H8aux1 = lb1n * Math.log10(2 * a1aux / (a1n * (lb1n + lc8)));
+        H8aux2 = lb1n * Math.log10(2 * a1aux / (a1n * (lb1n + lc8)));
+        H8aux3 = 2 * (a1n + lc8 - la1n - lb1n);
+        Bob = 4 * (H8aux1 + H8aux2 + H8aux3);
+        document.Oneturnairan.Bobina.value = Bob;
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let divc = document.querySelectorAll('div[style]');
+    for (let i = 0, len = divc.length; i < len; i++) {
+        let actdisplay = window.getComputedStyle(divc[i], null).display;
+        let actclear = window.getComputedStyle(divc[i], null).clear;
+        if (actdisplay == 'block' && actclear == 'both') {
+            divc[i].remove();
+        }
+    }
+});
+
+function Calcula_SingleTurnCoilAir() {
+    n1n = parseFloat(SingleTurnCoilAir.n1.value);
+    a1n = parseFloat(SingleTurnCoilAir.a1.value);
+    l1n = parseFloat(SingleTurnCoilAir.l1.value);
+    if (isNaN(n1n) || isNaN(a1n) || isNaN(l1n)) {
+        alert("Entre numeros formato XX.XX");
+    } else {
+        Bob = Math.pow((a1n * n1n), 2) / (22.9 * a1n + 25.4 * l1n);
+        document.SingleTurnCoilAir.Bobina.value = Bob;
+    }
+}
+
