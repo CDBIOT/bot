@@ -97,8 +97,13 @@ client.on('message_create', async message => {
 		client.sendMessage(message.from, 'Olá Seja Bem Vindo!');
 	}
   
+
+	if (message.body === 'Bom Dia') {
+		client.sendMessage(message.from, 'Olá Seja bem vindo! Sou BotCris em que posso ajudar!');
+	}
+  
 	if (message.body === '1') {
-		// send back "pong" to the chat the message was sent in
+		
 		client.sendMessage(message.from, '2');
 	}
 	else if (message.body === 'ping') {
