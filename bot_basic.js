@@ -13,6 +13,9 @@ const port = process.env.PORT || 3000 || 8000;
 const io = socketIO(server);
 
 
+
+function bot_basic(){
+
 //app.use("/", express.static(__dirname + "/"))
 
 app.get('/', (req, res) => {
@@ -43,7 +46,7 @@ client.initialize();
 
 io.on('connection', function(socket) {
   socket.emit('message', '© BOT-CDB- Iniciado');
-  socket.emit('qr', './icon.svg');
+  socket.emit('qr', 'http://localhost:3000/icon.svg');
 
  client.on('qr', (qr) => {
     qrcode.generate(qr, {small: true});
@@ -53,7 +56,7 @@ io.on('connection', function(socket) {
 client.on('ready', () => {
     socket.emit('ready', '© BOT-CDB Dispositivo pronto!');
     socket.emit('message', '© BOT-CDB Dispositivo pronto!');
-    socket.emit('qr', './check.svg')	
+    socket.emit('qr', '/check.svg')	
     console.log('© BOT-CDB Dispositivo pronto');
 });
 
@@ -100,7 +103,8 @@ client.on('message_create', message => {
 // Start your client
 //client.initialize();
 
-server.listen(port, () => {
-  console.log('server running at port: '+ port );
-});
-  
+// server.listen(port, () => {
+//   console.log('server running at port: '+ port );
+// });
+}
+module.exports={bot_basic}
