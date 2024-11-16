@@ -91,9 +91,9 @@ client.on('message_create', message => {
 	}
 });
 client.on('message_create', message => {
-	if (message.body === 'ping') {
+	if (message.body === 'Oi') {
 		// reply back "pong" directly to the message
-		message.reply('pong!');
+		message.reply('Seja Bem Vindo!');
 	}
 });
 })
