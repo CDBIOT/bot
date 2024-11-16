@@ -84,24 +84,30 @@ client.on('change_state', state => {
 });
 
 
-client.on('message_create', message => {
-	console.log(message.body);
-});
+// client.on('message_create', message => {
+// 	console.log(message.body);
+// });
 
-client.on('message_create', message => {
-	if (message.body === 'Ping') {
-		// send back "pong" to the chat the message was sent in
-		client.sendMessage(message.from, 'Pong');
-	}
-});
-client.on('message_create', message => {
-	if (message.body === 'ping') {
-		// reply back "pong" directly to the message
-		message.reply('pong!');
-	}
-});
+// client.on('message_create', message => {
+// 	if (message.body === 'Ping') {
+// 		// send back "pong" to the chat the message was sent in
+// 		client.sendMessage(message.from, 'Pong');
+// 	}
+// });
+ client.on('message_create', message => {
+  
+  if (msg.body === "1") {
+    //msg.reply("*COMUNIDADE ZDG*\n\n🤪 _Usar o WPP de maneira manual é prejudicial a saúde_\r\n\r\nhttps://comunidadezdg.com.br/ \r\n\r\n⏱️ As inscrições estão *ABERTAS*\n\nAssista o vídeo abaixo e entenda porque tanta gente comum está economizando tempo e ganhando dinheiro explorando a API do WPP, mesmo sem saber nada de programação.\n\n📺 https://youtu.be/mr0BvO9quhw");
+    msg.reply("Na *Comunidade ZDG* você vai integrar APIs, automações com chatbots e sistemas de atendimento multiusuário para whatsapp. Com *scripts para copiar e colar e suporte todos os dias no grupo de alunos*.\n\nhttps://comunidadezdg.com.br/ \n\n*⏱️ As inscrições estão ABERTAS*\n\nAssista o vídeo abaixo e entenda porque tanta gente comum está economizando tempo e ganhando dinheiro explorando a API do WPP, mesmo sem saber nada de programação.\n\n📺 https://www.youtube.com/watch?v=AoRhC_X6p5w")
+  } 
+  
+ 	else if (message.body === 'ping') {
+ 		// reply back "pong" directly to the message
+ 		message.reply('pong!');
+ 	}
+ });
 
-client.on('message', async msg => {
+client.on('message_create', async msg => {
 
   const nomeContato = msg._data.notifyName;
   let groupChat = await msg.getChat();
@@ -132,7 +138,7 @@ client.on('message', async msg => {
         const contact = await msg.getContact();
         setTimeout(function() {
             msg.reply(`@${contact.number}` + ' seu contato já foi encaminhado para o Cristiano');  
-            client.sendMessage('55111975594528@c.us','Contato ZDG. https://wa.me/' + `${contact.number}`);
+            client.sendMessage('55111975594528@c.us','Contato https://wa.me/' + `${contact.number}`);
 	    //client.sendMessage('5515998566622@c.us',`${contact.number}`);
           },1000 + Math.floor(Math.random() * 1000));
   
